@@ -15,12 +15,12 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        if (!player)
-            player = Player.Instance.transform;
-
-        pos = player.position;
-        pos.z = posZ;
-        pos.y = Mathf.Clamp(pos.y + posY, minY, maxY);
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * smoothSpeed);
+        if (player != null)
+        {
+            pos = player.position;
+            pos.z = posZ;
+            pos.y = Mathf.Clamp(pos.y + posY, minY, maxY);
+            transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * smoothSpeed);
+        }
     }
 }
