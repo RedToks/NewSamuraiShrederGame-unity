@@ -722,7 +722,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 882f25669109119448d686596e14fe77, type: 3}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4978,6 +4978,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1615692893}
   - component: {fileID: 1615692894}
+  - component: {fileID: 1615692895}
+  - component: {fileID: 1615692896}
   m_Layer: 0
   m_Name: samurai house
   m_TagString: Untagged
@@ -5042,7 +5044,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 149b9df16d428084695ea7ac964eb0bc, type: 3}
-  m_Color: {r: 0.8301887, g: 0.7550018, b: 0.7550018, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5052,6 +5054,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1615692895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615692892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924fa0d23b4fe334398f843ea3f7ecd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: StartHouse
+  playerTeleportPosition: {x: -5, y: -1.887854, z: 0}
+--- !u!61 &1615692896
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615692892}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.009574771}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.41, y: 2.64}
+    newSize: {x: 4.41, y: 2.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.41, y: 2.6591494}
+  m_EdgeRadius: 0
 --- !u!1 &1618167472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,7 +5382,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1740072597}
   - component: {fileID: 1740072596}
-  - component: {fileID: 1740072595}
   m_Layer: 0
   m_Name: DeathTriggerRight
   m_TagString: Untagged
@@ -5329,18 +5389,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1740072595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740072594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f99860c1b070e48aca440aaaadb566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1740072596
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5997,7 +6045,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1963488778}
   - component: {fileID: 1963488777}
-  - component: {fileID: 1963488776}
   m_Layer: 0
   m_Name: DeathTriggerLeft
   m_TagString: Untagged
@@ -6005,18 +6052,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1963488776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963488775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f99860c1b070e48aca440aaaadb566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1963488777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6346,6 +6381,7 @@ GameObject:
   - component: {fileID: 2041829833}
   - component: {fileID: 2041829834}
   - component: {fileID: 2041829835}
+  - component: {fileID: 2041829836}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6369,7 +6405,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 924345a5fb237ce44939239e2931f8ac, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6441,8 +6477,8 @@ Transform:
   m_GameObject: {fileID: 2041829824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.07, y: -2.83, z: 0}
-  m_LocalScale: {x: 1.4568, y: 1.4568, z: 1.4568}
+  m_LocalPosition: {x: -10.2, y: -2.83, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 83874140}
@@ -6561,6 +6597,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3732873230c1bac48b1edaf5a55c6f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2041829836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041829824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb476acd6155424f916b302dae60cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2049857175
 GameObject:
   m_ObjectHideFlags: 0
