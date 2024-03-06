@@ -1,19 +1,21 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class TalkingNPC : MonoBehaviour, IInteractable
+public class BaseNPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private string[] dialogues;
-    private int currentDialogueIndex = 0;
-    private bool isInteracting = false;
-    private float startTime;
+    [SerializeField] protected TextMeshProUGUI dialogueText;
+    [SerializeField] protected string[] dialogues;
+    protected int currentDialogueIndex = 0;
+    protected bool isInteracting = false;
+    protected float startTime;
 
-    [SerializeField] private Transform playerTransform;
     [SerializeField] private float dialogueCloseDistance = 5f;
 
-    private void Start()
+    public event Action OnLastDialogueFinished; 
+
+    protected virtual void Start()
     {
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         box.isTrigger = true;
@@ -32,7 +34,7 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         }
     }
 
-    private void StartDialogue()
+    protected void StartDialogue()
     {
         isInteracting = true;
         dialogueText.gameObject.SetActive(true);
@@ -48,13 +50,13 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         }
     }
 
-    private void ContinueDialogue()
+    protected void ContinueDialogue()
     {
         if (currentDialogueIndex + 1 < dialogues.Length)
         {
             currentDialogueIndex++;
             dialogueText.text = dialogues[currentDialogueIndex];
-            startTime = Time.time; 
+            startTime = Time.time;
         }
         else
         {
@@ -62,16 +64,18 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         }
     }
 
-    private void StopDialogue()
+    protected void StopDialogue()
     {
         dialogueText.gameObject.SetActive(false);
         isInteracting = false;
         currentDialogueIndex = 0;
+
+        OnLastDialogueFinished?.Invoke();
     }
 
-    private void Update()
+    protected void Update()
     {
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        float distance = Vector3.Distance(transform.position, Singletone.Instance.transform.position);
 
         if (isInteracting && (distance > dialogueCloseDistance || Time.time - startTime > 10f))
         {

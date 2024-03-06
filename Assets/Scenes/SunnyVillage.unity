@@ -194,7 +194,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -237,6 +237,50 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -51.025543, y: -0.17924762, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &62114996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62114998}
+  - component: {fileID: 62114997}
+  m_Layer: 0
+  m_Name: SaveData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &62114997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62114996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0dc7d15975dda4095c46b04344057c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &62114998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62114996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.123018, y: -1.2606057, z: -1.220903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1248,7 +1292,6 @@ MonoBehaviour:
   - tree
   - TREEES
   - TREEEEEEEEEEEES!
-  playerTransform: {fileID: 2041829829}
   dialogueCloseDistance: 5
 --- !u!61 &512524246
 BoxCollider2D:
@@ -1333,7 +1376,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1355,8 +1398,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 200
+  field of view: 101
   orthographic: 1
   orthographic size: 4
   m_Depth: -1
@@ -1401,7 +1444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1105b31e816a6943a0c0e08cb88eac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2041829829}
   smoothSpeed: 2.5
   posY: 2.8
   minY: -0.5
@@ -2537,7 +2579,7 @@ GameObject:
   - component: {fileID: 883776637}
   - component: {fileID: 883776636}
   - component: {fileID: 883776640}
-  - component: {fileID: 883776639}
+  - component: {fileID: 883776641}
   m_Layer: 0
   m_Name: NPC2_Idle_01
   m_TagString: Untagged
@@ -2633,25 +2675,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 220029061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &883776639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883776635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9249aaefada8990478232d0009cdba46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueText: {fileID: 886781909}
-  dialogues:
-  - A
-  - B
-  - C
-  playerTransform: {fileID: 2041829829}
-  dialogueCloseDistance: 5
 --- !u!61 &883776640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2697,6 +2720,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &883776641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883776635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9249aaefada8990478232d0009cdba46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 886781909}
+  dialogues:
+  - 123
+  - 321
+  - 0
+  dialogueCloseDistance: 5
 --- !u!1 &886781907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,7 +3621,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 62d724403eb60a941b4736410db5b84d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4433,7 +4474,6 @@ MonoBehaviour:
   - 1 Hi Bro
   - 2 How are you today?
   - 3 Lets go
-  playerTransform: {fileID: 2041829829}
   dialogueCloseDistance: 5
 --- !u!61 &1450063702
 BoxCollider2D:
@@ -6253,7 +6293,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 62d724403eb60a941b4736410db5b84d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6849,7 +6889,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2087668861
 RectTransform:
@@ -7105,3 +7145,4 @@ SceneRoots:
   - {fileID: 1740072597}
   - {fileID: 1598434614}
   - {fileID: 52587431}
+  - {fileID: 62114998}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,11 +8,13 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField] private string targetScene;
     [SerializeField] private Vector3 playerTeleportPosition;
 
+    public event Action OnTeleportChanged;
+
     private bool isColliding = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == PlayerData.Instance.gameObject)
+        if (other.gameObject == Singletone.Instance.gameObject)
         {
             isColliding = true;
         }
@@ -19,7 +22,7 @@ public class PlayerTeleport : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == PlayerData.Instance.gameObject)
+        if (other.gameObject == Singletone.Instance.gameObject)
         {
             isColliding = false;
         }
@@ -37,7 +40,8 @@ public class PlayerTeleport : MonoBehaviour
 
     private void SavePlayerData()
     {
-        PlayerData.Instance.SavePlayerData(playerTeleportPosition);
+        Singletone.Instance.SavePlayerData(playerTeleportPosition);
+        OnTeleportChanged?.Invoke();
     }
 
     private void LoadScene(string sceneName)
@@ -57,8 +61,8 @@ public class PlayerTeleport : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        Vector3 savedPosition = PlayerData.Instance.playerPosition;
-        PlayerData player = PlayerData.Instance;
+        Vector3 savedPosition = Singletone.Instance.playerPosition;
+        Singletone player = Singletone.Instance;
 
         if (player != null)
         {
@@ -68,5 +72,10 @@ public class PlayerTeleport : MonoBehaviour
         {
             Debug.LogError("Player not found in the scene with tag 'Player'");
         }
+    }
+
+    public void ChangeTargetScene(string newTargetScene)
+    {
+        targetScene = newTargetScene;
     }
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+public class Singletone : MonoBehaviour
 {
-    public static PlayerData Instance { get; private set; }
+    public static Singletone Instance { get; private set; }
 
     public Vector3 playerPosition;
         
