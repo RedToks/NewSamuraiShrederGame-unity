@@ -5,24 +5,29 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BaseNPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] protected TextMeshProUGUI dialogueText;
-    [SerializeField] protected string[] dialogues;
-    protected int currentDialogueIndex = 0;
-    protected bool isInteracting = false;
-    protected float startTime;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [TextArea] [SerializeField] private string[] dialogues;
+
+    private int currentDialogueIndex = 0;
+    private bool isInteracting = false;
+    private float startTime;
 
     [SerializeField] private float dialogueCloseDistance = 5f;
 
-    public event Action OnLastDialogueFinished; 
+    public event Action OnLastDialogueFinished;
 
-    protected virtual void Start()
+    private TextAppearAnimation textAppearAnimation; 
+
+    private void Start()
     {
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         box.isTrigger = true;
         dialogueText.gameObject.SetActive(false);
+
+        textAppearAnimation = dialogueText.GetComponent<TextAppearAnimation>();
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         if (!isInteracting)
         {
@@ -34,7 +39,7 @@ public class BaseNPC : MonoBehaviour, IInteractable
         }
     }
 
-    protected void StartDialogue()
+    private void StartDialogue()
     {
         isInteracting = true;
         dialogueText.gameObject.SetActive(true);
@@ -43,6 +48,8 @@ public class BaseNPC : MonoBehaviour, IInteractable
         if (currentDialogueIndex < dialogues.Length)
         {
             dialogueText.text = dialogues[currentDialogueIndex];
+
+            textAppearAnimation.PlayAnimation();
         }
         else
         {
@@ -50,13 +57,15 @@ public class BaseNPC : MonoBehaviour, IInteractable
         }
     }
 
-    protected void ContinueDialogue()
+    private void ContinueDialogue()
     {
         if (currentDialogueIndex + 1 < dialogues.Length)
         {
             currentDialogueIndex++;
             dialogueText.text = dialogues[currentDialogueIndex];
             startTime = Time.time;
+
+            textAppearAnimation.PlayAnimation();
         }
         else
         {
@@ -64,7 +73,7 @@ public class BaseNPC : MonoBehaviour, IInteractable
         }
     }
 
-    protected void StopDialogue()
+    private void StopDialogue()
     {
         dialogueText.gameObject.SetActive(false);
         isInteracting = false;
@@ -73,7 +82,7 @@ public class BaseNPC : MonoBehaviour, IInteractable
         OnLastDialogueFinished?.Invoke();
     }
 
-    protected void Update()
+    private void Update()
     {
         float distance = Vector3.Distance(transform.position, Singletone.Instance.transform.position);
 

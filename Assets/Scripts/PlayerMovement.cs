@@ -7,20 +7,25 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
 
     private Rigidbody2D _rigidbody;
+    private Animator animator;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+
+
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
         Vector2 movement = new Vector2(horizontalInput, 0);
         movement.Normalize();
-
         _rigidbody.velocity = new Vector2(movement.x * _moveSpeed, _rigidbody.velocity.y);
+
+        animator.SetInteger("state", Mathf.Abs(horizontalInput) > 0 ? 1 : 0);
 
         if (movement.x < 0 && facingRight)
             FlipPlayer();

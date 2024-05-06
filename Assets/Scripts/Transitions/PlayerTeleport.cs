@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,16 +8,23 @@ public class PlayerTeleport : MonoBehaviour
 {
     [SerializeField] private string targetScene;
     [SerializeField] private Vector3 playerTeleportPosition;
+    [SerializeField] private TextMeshProUGUI promptText;
 
     public event Action OnTeleportChanged;
 
     private bool isColliding = false;
+
+    private void Start()
+    {
+        promptText.gameObject.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == Singletone.Instance.gameObject)
         {
             isColliding = true;
+            promptText.gameObject.SetActive(true);          
         }
     }
 
@@ -25,6 +33,7 @@ public class PlayerTeleport : MonoBehaviour
         if (other.gameObject == Singletone.Instance.gameObject)
         {
             isColliding = false;
+            promptText.gameObject.SetActive(false);
         }
     }
 

@@ -1,14 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class SpecialNPC : BaseNPC
+public class SpecialNPC : BaseNPC, IInteractable
 {
     [SerializeField] private string newSceneToTeleport;
-    protected override void Start()
-    {
-        base.Start();
-    }
+    [SerializeField] private ScreenFade screenFader;
 
     private void OnEnable()
     {
@@ -22,6 +20,7 @@ public class SpecialNPC : BaseNPC
 
     private void PerformLastDialogueAction()
     {
+        screenFader.Fade();
         FindObjectOfType<PlayerTeleport>()?.ChangeTargetScene(newSceneToTeleport);
     }
 }
