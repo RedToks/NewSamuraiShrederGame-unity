@@ -12,8 +12,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        SaveData.Instance.SaveCameraPosition(pos);
-        Vector3 savedCameraPosition = SaveData.Instance.LoadCameraPosition(transform.position);
+        SaveLoadData.Instance.SaveCameraPosition(pos);
+        Vector3 savedCameraPosition = SaveLoadData.Instance.LoadCameraPosition(transform.position);
         transform.position = savedCameraPosition;
     }
 
@@ -30,9 +30,9 @@ public class CameraFollow : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (SaveData.Instance != null)
+        if (SaveLoadData.Instance != null)
         {
-            SaveData.Instance.SaveCameraPosition(transform.position);
+            SaveLoadData.Instance.SaveCameraPosition(transform.position);
         }
     }
 }

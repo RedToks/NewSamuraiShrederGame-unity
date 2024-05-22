@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public event Action<int> OnHealthChanged;
 
@@ -18,15 +18,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            ApplyDamage(10);
-            Debug.Log("Я нанес 10 урона");
-        }
-    }
-    public void ApplyDamage(int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;
 

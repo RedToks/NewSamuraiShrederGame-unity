@@ -10,7 +10,8 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private Transform groundCheckCollider;
     [SerializeField] private float groundCheckRadius = 0.2f;
     private Rigidbody2D _rigidbody;
-    private bool isGrounded;
+    public bool IsGrounded { get; set; }
+    public bool HasJumped { get; set; }
 
     private void Start()
     {
@@ -19,9 +20,9 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckCollider.position, groundCheckRadius, groundLayer);
+        IsGrounded = Physics2D.OverlapCircle(groundCheckCollider.position, groundCheckRadius, groundLayer);
 
-        if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
+        if (IsGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
         {
             Jump();
         }
@@ -30,6 +31,7 @@ public class PlayerJump : MonoBehaviour
     private void Jump()
     {
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+        HasJumped = true;
     }
 
     private void OnDrawGizmos()

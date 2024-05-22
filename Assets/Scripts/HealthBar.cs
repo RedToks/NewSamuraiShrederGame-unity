@@ -4,7 +4,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private PlayerStats _target;
+    [SerializeField] private PlayerHealth _target;
     private Slider _healthSlider;
 
     private void Start()

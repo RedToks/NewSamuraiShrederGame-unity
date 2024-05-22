@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SaveData : MonoBehaviour
+public class SaveLoadData : MonoBehaviour
 {
-    public static SaveData Instance { get; private set; }
+    public static SaveLoadData Instance { get; private set; }
 
     private void Awake()
     {

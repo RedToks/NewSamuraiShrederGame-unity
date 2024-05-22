@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
-    private bool facingRight = true;
+    public bool facingRight { get; set; } = true;
 
     private Rigidbody2D _rigidbody;
     private Animator animator;
@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
-
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
         Vector2 movement = new Vector2(horizontalInput, 0);
